@@ -1,29 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: teojimen <teojimen@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/30 18:22:30 by teojimene         #+#    #+#             */
-/*   Updated: 2024/01/30 18:22:30 by teojimene        ###   ########.fr       */
+/*   Created: 2024/01/31 09:54:41 by teojimen          #+#    #+#             */
+/*   Updated: 2024/01/31 09:54:41 by teojimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	main(int argc, char **argv)
+int	ft_strlen(const char *str)
 {
-	t_fractol fractol;
-	
-	if(argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10))//mandelbrot
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
+}
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t	i;
+	int		len_s1;
+
+	len_s1 = ft_strlen(s1);
+	i = 0;
+	if (*s1 == '\0' && *s2 == '\0')
+		return (0);
+	while (i < n && (int)i <= len_s1)
 	{
-		fractol.name = argv[1];
-		fractol_init(&fractol);
-		render(&fractol);
-		mlx_loop(fractol.mlx_conn);
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
 	}
-	// else
-		// exit(1);
 	return (0);
 }
