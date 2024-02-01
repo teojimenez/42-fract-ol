@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: teojimen <teojimen@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/30 18:22:30 by teojimene         #+#    #+#             */
-/*   Updated: 2024/01/30 18:22:30 by teojimene        ###   ########.fr       */
+/*   Created: 2024/02/01 12:28:03 by teojimen          #+#    #+#             */
+/*   Updated: 2024/02/01 12:28:03 by teojimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	main(int argc, char **argv)
+int fractol_events(int keycode, t_fractol *fractol)
 {
-	t_fractol fractol;
-	
-	if(argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10))//mandelbrot
-	{
-		fractol.name = argv[1];
-		fractol_init(&fractol);
-		render(&fractol);
-		//mlx_loop_hook(fractol.mlx_window, fractol_events, &fractol);
-		mlx_loop(fractol.mlx_conn);
-	}
-	// else
-		// exit(1);
-	return (0);
+    printf("%d", keycode);
+    fractol->nb_iterations++;
+    return (0);
 }

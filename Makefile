@@ -15,21 +15,21 @@ NAME = fractol
 CFLAGS = -Wall -Wextra -Werror -g
 # -fsanitize=address
 
-SRC = main.c
+SRC = main.c init.c utils.c render.c events.c
 
 OBJECTS = $(SRC:.c=.o)
 
 CC = gcc
 
 # ? LINUX
-GNOME_FLAGS = -lXext -lX11 -lm -lbsd
-GNOME_PATH = ./minilibx-linux/
-MLX_PATH = $(GNOME_PATH)/libmlx.a
+# GNOME_FLAGS = -lXext -lX11 -lm -lbsd
+# GNOME_PATH = ./minilibx-linux/
+# MLX_PATH = $(GNOME_PATH)/libmlx.a
 
 # ? MAC
-# GNOME_FLAGS = -framework OpenGL -framework Appkit -l z
-# GNOME_PATH = ./minilibx_mac/
-# MLX_PATH = $(GNOME_PATH)/libmlx.a
+GNOME_FLAGS = -framework OpenGL -framework Appkit -l z
+GNOME_PATH = ./minilibx-mac/
+MLX_PATH = $(GNOME_PATH)/libmlx.a
 
 FLAGS = -I $(GNOME_PATH) $(CFLAGS)
 

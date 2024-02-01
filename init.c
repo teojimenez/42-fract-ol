@@ -35,6 +35,5 @@ void	fractol_init(t_fractol *fractol)
 	fractol->img.img_pixel_ptr = mlx_get_data_addr(fractol->img.img_ptr, &fractol->img.bits_per_pixel, \
 	&fractol->img.line_length, &fractol->img.endian); 
 	
-	//events
-	//hooks
+	fractol->nb_iterations = 1500;
 }
