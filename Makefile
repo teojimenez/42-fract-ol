@@ -12,7 +12,7 @@
 
 NAME = fractol
 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=	
 # -fsanitize=address
 
 SRC = main.c init.c utils.c render.c events.c
