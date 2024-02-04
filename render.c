@@ -55,8 +55,8 @@ void	handle_input(t_fractol *fractol, int x, int y)
 
 	z.x = 0;
 	z.y = 0;
-	c.x = (map(2, -2, SIZE_X, 0, x) * fractol->zoom) + fractol->moveX * fractol->zoom;
-	c.y = (map(-2, 2, SIZE_Y, 0, y) * fractol->zoom) + fractol->moveY * fractol->zoom;
+	c.x = (map(2, -2, SIZE_X, 0, x) * fractol->zoom) + fractol->moveX;
+	c.y = (map(-2, 2, SIZE_Y, 0, y) * fractol->zoom) + fractol->moveY;
 	// c.x = (map(2, -2, SIZE_X, 0, x) * fractol->zoom) + fractol->moveX;
 	// c.y = (map(-2, 2, SIZE_Y, 0, y) * fractol->zoom) + fractol->moveY;
 
