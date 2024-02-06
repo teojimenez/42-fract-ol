@@ -15,7 +15,7 @@
 void	fractol_init(t_fractol *fractol)
 {
 	fractol->mlx_conn = mlx_init();
-   	if(!fractol->mlx_conn)
+	if (!fractol->mlx_conn)
 		exit(1); //leave
 	fractol->mlx_window = mlx_new_window(fractol->mlx_conn, SIZE_X, SIZE_Y, fractol->name);
 	if(!fractol->mlx_window)
