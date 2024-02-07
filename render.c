@@ -20,7 +20,7 @@ double map(double new_max, double new_min, double old_max, double old_min, doubl
 void	my_pixel_put(int x, int y, t_img *img, int color)
 {
 	int offset;
-	offset = (y * img->line_length) + (x * img->bits_per_pixel / 8);
+	offset = (y * img->line_length) + (x * img->bits_px / 8);
 	*(unsigned int *)(img->img_pixel_ptr + offset) = color;
 }
 
@@ -47,15 +47,15 @@ void	handle_input(t_fractol *fractol, int x, int y)
 	i = -1;
 	z.x = 0;
 	z.y = 0;
-	c.x = (map(2, -2, SIZE_X, 0, x) * fractol->zoom) + fractol->moveX;
-	c.y = (map(-2, 2, SIZE_Y, 0, y) * fractol->zoom) + fractol->moveY;
+	c.x = (map(2, -2, SIZE_X, 0, x) * fractol->zoom) + fractol->move_x;
+	c.y = (map(-2, 2, SIZE_Y, 0, y) * fractol->zoom) + fractol->move_y;
 
 	if(!ft_strncmp(fractol->name, "julia", 5))
 	{
 		c.x = fractol->julia1;
 		c.y = fractol->julia2;	
-		z.x = (map(2, -2, SIZE_X, 0, x) * fractol->zoom) + fractol->moveX;
-		z.y = (map(-2, 2, SIZE_Y, 0, y) * fractol->zoom) + fractol->moveY;
+		z.x = (map(2, -2, SIZE_X, 0, x) * fractol->zoom) + fractol->move_x;
+		z.y = (map(-2, 2, SIZE_Y, 0, y) * fractol->zoom) + fractol->move_y;
 	}
 	while(++i < fractol->nb_iterations)
 	{

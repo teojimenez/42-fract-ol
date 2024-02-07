@@ -12,33 +12,36 @@
 
 #include "fractol.h"
 
-void	fractol_init(t_fractol *fractol)
+static void	init_var(t_fractol *f)
 {
-	fractol->mlx_conn = mlx_init();
-	if (!fractol->mlx_conn)
-		exit(1); //leave
-	fractol->mlx_window = mlx_new_window(fractol->mlx_conn, SIZE_X, SIZE_Y, fractol->name);
-	if(!fractol->mlx_window)
-	{
-		mlx_destroy_window(fractol->mlx_conn, fractol->mlx_window);  //destroy windw
-		free(fractol->mlx_conn);
-		exit(1);
-	}
-	fractol->img.img_ptr = mlx_new_image(fractol->mlx_conn, SIZE_X, SIZE_Y);
-	if(!fractol->img.img_ptr)
-	{
-		mlx_destroy_window(fractol->mlx_conn, fractol->mlx_window); //destroy img
-		mlx_destroy_image(fractol->mlx_conn, fractol->img.img_ptr); //destroy windw
-		free(fractol->mlx_conn);
-		exit(1);
-	}
-	fractol->img.img_pixel_ptr = mlx_get_data_addr(fractol->img.img_ptr, &fractol->img.bits_per_pixel, \
-	&fractol->img.line_length, &fractol->img.endian); 
-	
-	fractol->nb_iterations = 50;
-	fractol->zoom = 1.00;
-	fractol->moveX = 0.00;
-	fractol->moveY = 0.00;
-	fractol->i_color = 1;
+	f->nb_iterations = 50;
+	f->zoom = 1.00;
+	f->move_x = 0.00;
+	f->move_y = 0.00;
+	f->i_color = 1;
+}
 
+void	f_init(t_fractol *f)
+{
+	f->mlx_conn = mlx_init();
+	if (!f->mlx_conn)
+		exit(1);
+	f->mlx_window = mlx_new_window(f->mlx_conn, SIZE_X, SIZE_Y, f->name);
+	if (!f->mlx_window)
+	{
+		mlx_destroy_window(f->mlx_conn, f->mlx_window);
+		free(f->mlx_conn);
+		exit(1);
+	}
+	f->img.img_ptr = mlx_new_image(f->mlx_conn, SIZE_X, SIZE_Y);
+	if (!f->img.img_ptr)
+	{
+		mlx_destroy_window(f->mlx_conn, f->mlx_window);
+		mlx_destroy_image(f->mlx_conn, f->img.img_ptr);
+		free(f->mlx_conn);
+		exit(1);
+	}
+	f->img.img_pixel_ptr = mlx_get_data_addr(f->img.img_ptr, &f->img.bits_px, \
+	&f->img.line_length, &f->img.endian);
+	init_var(f);
 }

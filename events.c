@@ -38,13 +38,13 @@ int	key_handler(int keycode, t_fractol *fractol)
 	if (keycode == KEY_ESC)
 		close_handler(fractol);
 	else if (keycode == KEY_LEFT)
-		fractol->moveX -= (0.5 * fractol->zoom);
+		fractol->move_x -= (0.5 * fractol->zoom);
 	else if (keycode == KEY_RIGHT)
-		fractol->moveX += (0.5 * fractol->zoom);
+		fractol->move_x += (0.5 * fractol->zoom);
 	else if (keycode == KEY_UP)
-		fractol->moveY += (0.5 * fractol->zoom);
+		fractol->move_y += (0.5 * fractol->zoom);
 	else if (keycode == KEY_DOWN)
-		fractol->moveY -= (0.5 * fractol->zoom);
+		fractol->move_y -= (0.5 * fractol->zoom);
 	else if (keycode == KEY_SPACE)
 	{
 		if (fractol->i_color == 3)
@@ -63,31 +63,3 @@ void	fractol_events(t_fractol *fractol)
 	mlx_hook(fractol->mlx_window, 02, 0, key_handler, fractol);
 	mlx_hook(fractol->mlx_window, 17, 0, close_handler, fractol);
 }
-
-// void ft_zoom(double x, double y, t_fractol *fractal, int k)
-// {
-//     // int min = 0;
-//     // int max  = 100;
-//     double zoom_factor = 0.5;
-//     double move_factor = 0.1;
-//     double deltaX = (x - SIZE_X / 2) / (double)SIZE_X * fractal->zoom;
-//     double deltaY = (y - SIZE_Y / 2) / (double)SIZE_Y * fractal->zoom;
-//     if (k) // Zoom in
-//     {
-//         fractal->moveX += deltaX * move_factor;
-//         fractal->moveY += deltaY * move_factor;
-//         fractal->zoom *= zoom_factor;
-//     }
-//     else // Zoom out
-//     {
-//         fractal->moveX -= deltaX * move_factor;
-//         fractal->moveY -= deltaY * move_factor;
-//         fractal->zoom /= zoom_factor;
-//     }
-
-//     // Limita el movimiento dentro del rango adecuado
-//     if (fractal->moveX > 800) fractal->moveX = 800;
-//     if (fractal->moveX < -800) fractal->moveX = -800;
-//     if (fractal->moveY > 800) fractal->moveY = 800;
-//     if (fractal->moveY < -800) fractal->moveY = -800;
-// }
